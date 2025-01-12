@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  pathtokeys = ../../system/users/keys;
+  pathtokeys = ./keys;
   yubikeys = lib.lists.forEach (builtins.attrNames (builtins.readDir pathtokeys))
     (key: lib.substring 0 (lib.stringLength key - lib.stringLength ".pub") key);
   yubikeyPublicKeyEntries = lib.attrsets.mergeAttrsList (
