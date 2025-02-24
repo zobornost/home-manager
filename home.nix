@@ -35,6 +35,10 @@
       configFile.text = ''
         $env.config.show_banner = false
         use ~/.cache/starship/init.nu
+
+        $env.config.hooks.env_change.PWD = (
+          $env.config.hooks.env_change.PWD | append (source nu-hooks/nu-hooks/direnv/config.nu)
+        )
       '';
       envFile.text = ''
         mkdir ~/.cache/starship
