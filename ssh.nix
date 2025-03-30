@@ -12,10 +12,13 @@ in
   programs.ssh = {
     enable = true;
     extraConfig = ''
-      SetEnv TERM=xterm-256color
-      AddKeysToAgent yes
-      Host *
-        IdentityAgent ~/.1password/agent.sock
+    SetEnv TERM=xterm-256color
+    AddKeysToAgent yes
+    Host ozpc
+      HostName 192.168.1.12
+      User oz
+    Host *
+      IdentityAgent ~/.1password/agent.sock
     '';
   };
   home.file = {

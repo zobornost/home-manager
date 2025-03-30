@@ -5,6 +5,7 @@
   home.homeDirectory = "/home/oz";
   home.stateVersion = "24.11"; # Please read the comment before changing.
   home.packages = [
+    pkgs.godot_4
   ];
   home.sessionVariables = {
     EDITOR = "code";
@@ -34,11 +35,22 @@
       enable = true;
       configFile.text = ''
         $env.config.show_banner = false
-        use ~/.cache/starship/init.nu
+        $env.config = {
+          hooks: {
+            pre_prompt: [{ ||
+              if (which direnv | is-empty) {
+                return
+              }
 
-        $env.config.hooks.env_change.PWD = (
-          $env.config.hooks.env_change.PWD | append (source nu-hooks/nu-hooks/direnv/config.nu)
-        )
+              direnv export json | from json | default {} | load-env
+              if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
+                $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
+              }
+            }]
+          }
+        }
+        $env.PATH = ($env.PATH | split row (char esep) | append "~/.cargo/bin")
+        use ~/.cache/starship/init.nu
       '';
       envFile.text = ''
         mkdir ~/.cache/starship
