@@ -14,12 +14,15 @@ in
     extraConfig = ''
     SetEnv TERM=xterm-256color
     AddKeysToAgent yes
-    Host ozpc
-      HostName 192.168.1.12
-      User oz
     Host *
       IdentityAgent ~/.1password/agent.sock
-    '';
+    Host home
+      HostName home
+      User oz
+    Host ozpc
+      HostName ozpc
+      User oz
+  '';
   };
   home.file = {
     ".ssh/sockets/.keep".text = "# Managed by Home Manager";
