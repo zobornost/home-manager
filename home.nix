@@ -1,18 +1,28 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
 {
   home.username = "oz";
   home.homeDirectory = "/home/oz";
   home.stateVersion = "24.11"; # Please read the comment before changing.
-  home.packages = [
-    pkgs.godot_4
+  home.packages = with pkgs; [
+    blesh
+    emacs
+    fd
+    godot_4
+    ghc
+    haskellPackages.haskell-language-server
   ];
   home.sessionVariables = {
     EDITOR = "code";
-    TERMINAL = "nu";
+    TERMINAL = "bash";
   };
   programs = {
-    bash.enable = true;
+    bash = {
+      enable = true;
+      enableCompletion = true;
+      initExtra = ''
+        source "${pkgs.blesh}/share/blesh/ble.sh"
+      '';
+    };
     chromium = {
       enable = true;
       extensions = [
@@ -31,36 +41,9 @@
       userEmail = "56755170+ozmodeuz@users.noreply.github.com";
     };
     home-manager.enable = true;
-    nushell = {
-      enable = true;
-      configFile.text = ''
-        $env.config.show_banner = false
-        $env.config = {
-          hooks: {
-            pre_prompt: [{ ||
-              if (which direnv | is-empty) {
-                return
-              }
-
-              direnv export json | from json | default {} | load-env
-              if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
-                $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
-              }
-            }]
-          }
-        }
-        $env.PATH = ($env.PATH | split row (char esep) | append "~/.cargo/bin")
-        use ~/.cache/starship/init.nu
-      '';
-      envFile.text = ''
-        mkdir ~/.cache/starship
-        starship init nu | save -f ~/.cache/starship/init.nu
-      '';
-    };
     starship = {
       enable = true;
       enableBashIntegration = true;
-      enableNushellIntegration = true;
       settings = {
         character = {
           success_symbol = "[](green)";

@@ -6,8 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs @ { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -15,7 +14,8 @@
     {
       homeConfigurations."oz" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ./ssh.nix ];
+        modules = [ ./home.nix ./ssh.nix ./vim.nix ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 }
