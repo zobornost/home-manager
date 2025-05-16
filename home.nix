@@ -5,11 +5,29 @@
     homeDirectory = "/home/oz";
     stateVersion = "24.11"; # Please read the comment before changing.
     packages = with pkgs; [
+      _1password-cli
+      _1password-gui
+      apostrophe
       blesh
+      codex
+      devbox
+      devenv
+      discord
+      eyedropper
       emacs
       fd
-      godot_4
       ghc
+      ghostty
+      godot_4
+      google-chrome
+      hyfetch
+      inkscape
+      jdk
+      jetbrains.idea-community
+      scribus
+      vscode-fhs
+      windsurf
+      zed-editor-fhs
     ];
     sessionVariables = {
       EDITOR = "code";
@@ -46,6 +64,9 @@
     home-manager = {
       enable = true;
     };
+    gnome-shell = {
+      enable = true;
+    };
     starship = {
       enable = true;
       enableBashIntegration = true;
@@ -55,6 +76,10 @@
           error_symbol = "[](red)";
         };
       };
+    };
+    vscode = {
+      enable = true;
+      package = pkgs.vscode-fhs;
     };
   };
   stylix = {
