@@ -12,17 +12,20 @@ in
   programs.ssh = {
     enable = true;
     extraConfig = ''
-    SetEnv TERM=xterm-256color
-    AddKeysToAgent yes
-    Host *
-      IdentityAgent ~/.1password/agent.sock
-    Host home
-      HostName home
-      User oz
-    Host ozpc
-      HostName ozpc
-      User oz
-  '';
+      SetEnv TERM=xterm-256color
+      AddKeysToAgent yes
+      Host *
+        IdentityAgent ~/.1password/agent.sock
+      Host home
+        HostName home
+        User oz
+      Host ozpc
+        HostName ozpc
+        User oz
+      Host nixosvm
+        HostName 192.168.122.40
+        User oz
+    '';
   };
   home.file = {
     ".ssh/sockets/.keep".text = "# Managed by Home Manager";
