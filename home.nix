@@ -1,42 +1,48 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   home = {
     username = "oz";
     homeDirectory = "/home/oz";
     stateVersion = "24.11"; # Please read the comment before changing.
     packages = with pkgs; [
-    _1password-cli
-    _1password-gui
-    blender
-    blockbench
-    code-cursor
-    chromium
-    deskflow
-    devbox
-    devenv
-    discord
-    eyedropper
-    ghostty
+      _1password-cli
+      _1password-gui
+      blender
+      blockbench
+      code-cursor
+      chromium
+      deskflow
+      devbox
+      devenv
+      discord
+      eyedropper
+      ghostty
       gnome-network-displays
       gnome-remote-desktop
-    godot_4
-    google-chrome
-    hyfetch
-    inkscape
-    jdk
-    jetbrains-toolbox
-    jetbrains.idea-community
-    nodejs_22
-    nuclear
-    prismlauncher
-    scribus
+      godot_4
+      google-chrome
+      hyfetch
+      inkscape
+      jdk
+      jetbrains-toolbox
+      jetbrains.idea-community
+      nodejs_22
+      nuclear
+      prismlauncher
+      scribus
       vscode
       windsurf
       zed-editor
-  ];
+    ];
     sessionVariables = {
-    EDITOR = "code";
-    TERMINAL = "ghostty";
+      EDITOR = "code";
+      TERMINAL = "ghostty";
+    };
   };
   catppuccin.flavor = "mocha";
   nixpkgs.config.allowUnfree = true;
