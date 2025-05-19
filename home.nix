@@ -10,14 +10,19 @@
       apostrophe
       blesh
       codex
+      dconf-editor
+      desktop-file-utils
       devbox
       devenv
+      direnv
       discord
       eyedropper
       emacs
       fd
       ghc
       ghostty
+      gnome-network-displays
+      gnome-remote-desktop
       godot_4
       google-chrome
       hyfetch
@@ -25,9 +30,9 @@
       jdk
       jetbrains.idea-community
       scribus
-      vscode-fhs
+      vscode
       windsurf
-      zed-editor-fhs
+      zed-editor
     ];
     sessionVariables = {
       EDITOR = "code";
@@ -76,10 +81,6 @@
           error_symbol = "[](red)";
         };
       };
-    };
-    vscode = {
-      enable = true;
-      package = pkgs.vscode-fhs;
     };
   };
   stylix = {
