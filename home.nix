@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
 {
   home.username = "oz";
   home.homeDirectory = "/home/oz";
@@ -77,7 +76,6 @@
     starship = {
       enable = true;
       enableBashIntegration = true;
-      enableNushellIntegration = true;
       settings = {
         character = {
           success_symbol = "[](green)";

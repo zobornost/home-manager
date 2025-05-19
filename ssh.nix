@@ -16,6 +16,12 @@ in
       AddKeysToAgent yes
       Host *
         IdentityAgent ~/.1password/agent.sock
+      Host home
+        HostName home
+        User oz
+      Host ozpc
+        HostName ozpc
+        User oz
       Host nixosvm
         HostName 192.168.122.40
         User oz
