@@ -3,22 +3,41 @@
 {
   home.username = "oz";
   home.homeDirectory = "/home/oz";
-  home.stateVersion = "24.11"; # Please read the comment before changing.
-  home.packages = [
+  home.stateVersion = "24.11";
+  home.packages = with pkgs; [
+    _1password-cli
+    _1password-gui
+    blender
+    blockbench
+    code-cursor
+    chromium
+    deskflow
+    devbox
+    devenv
+    discord
+    eyedropper
+    ghostty
+    godot_4
+    google-chrome
+    hyfetch
+    inkscape
+    jdk
+    jetbrains-toolbox
+    jetbrains.idea-community
+    nodejs_22
+    nuclear
+    prismlauncher
+    scribus
+    vscode-fhs
+    zed-editor-fhs
   ];
   home.sessionVariables = {
     EDITOR = "code";
-    TERMINAL = "nu";
+    TERMINAL = "ghostty";
   };
+  nixpkgs.config.allowUnfree = true;
   programs = {
     bash.enable = true;
-    chromium = {
-      enable = true;
-      extensions = [
-        "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1password
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-      ];
-    };
     git = {
       enable = true;
       extraConfig = {
@@ -26,7 +45,7 @@
           defaultBranch = "main";
         };
       };
-      userName = "Oz Browning";
+      userName = "Zoe Browning";
       userEmail = "56755170+ozmodeuz@users.noreply.github.com";
     };
     home-manager.enable = true;
@@ -34,11 +53,21 @@
       enable = true;
       configFile.text = ''
         $env.config.show_banner = false
-        use ~/.cache/starship/init.nu
+        $env.config = {
+          hooks: {
+            pre_prompt: [{ ||
+              if (which direnv | is-empty) {
+                return
+              }
 
-        $env.config.hooks.env_change.PWD = (
-          $env.config.hooks.env_change.PWD | append (source nu-hooks/nu-hooks/direnv/config.nu)
-        )
+              direnv export json | from json | default {} | load-env
+              if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
+                $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
+              }
+            }]
+          }
+        }
+        use ~/.cache/starship/init.nu
       '';
       envFile.text = ''
         mkdir ~/.cache/starship
@@ -56,5 +85,11 @@
         };
       };
     };
+  };
+  systemd.user.sessionVariables = {
+    GDK_BACKEND    = "wayland";
+    NIXOS_OZONE_WL = "1";
+    OZONE_PLATFORM = "wayland";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 }
