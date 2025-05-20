@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   home.username = "oz";
   home.homeDirectory = "/home/oz";
@@ -27,8 +32,9 @@
     nuclear
     prismlauncher
     scribus
-    vscode-fhs
-    zed-editor-fhs
+    vscode
+    windsurf
+    zed-editor
   ];
   home.sessionVariables = {
     EDITOR = "code";
@@ -85,7 +91,7 @@
     };
   };
   systemd.user.sessionVariables = {
-    GDK_BACKEND    = "wayland";
+    GDK_BACKEND = "wayland";
     NIXOS_OZONE_WL = "1";
     OZONE_PLATFORM = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
