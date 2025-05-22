@@ -7,7 +7,7 @@ let
     targetPkgs = pkgs: with pkgs; [
       bash windsurf rustup
       gcc binutils gnumake 
-      pkg-config openssl.dev
+      pkg-config openssl.dev gtk3.dev
     ];
     
     runScript = ''

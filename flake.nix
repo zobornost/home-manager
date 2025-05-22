@@ -1,12 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    stylix.url = "github:nix-community/stylix";
     catppuccin.url = "github:catppuccin/nix";
-    stylix.url = "github:danth/stylix";
   };
   outputs = inputs @ { nixpkgs, home-manager, catppuccin, stylix, ... }:
     let
