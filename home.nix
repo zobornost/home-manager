@@ -19,14 +19,19 @@
       deskflow
       devbox
       devenv
+      direnv
       discord
       eyedropper
+      ffmpeg
       ghostty
+      gimp
       gnome-network-displays
       gnome-remote-desktop
+      gnome-screenshot
       godot_4
       google-chrome
       hyfetch
+      imagemagick
       inkscape
       jdk
       jetbrains-toolbox
@@ -43,6 +48,9 @@
       EDITOR = "code";
       TERMINAL = "ghostty";
     };
+    file.".local/share/icons/windsurf.png" = {
+      source = ./resources/windsurf.png;
+    };
   };
   catppuccin.flavor = "mocha";
   nixpkgs.config.allowUnfree = true;
@@ -52,6 +60,19 @@
       enableCompletion = true;
       initExtra = ''
         source "${pkgs.blesh}/share/blesh/ble.sh"
+        eval "$(direnv hook bash)"
+        nixos() {
+          if [ "$1" = "update" ]; then
+            sudo echo "Updating nixos"
+            nix flake update --flake ~/.config/nixos && sudo nixos-rebuild switch --flake ~/.config/nixos
+          fi
+        }
+        home() {
+          if [ "$1" = "update" ]; then
+            echo "Updating home-manager"
+            nix flake update --flake ~/.config/home-manager && home-manager switch --flake ~/.config/home-manager
+          fi
+        }
       '';
     };
     chromium = {
@@ -60,6 +81,12 @@
         "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1password
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
       ];
+    };
+    direnv = {
+      enable = true;
+      config = {
+        hide_env_diff = true;
+      };
     };
     git = {
       enable = true;

@@ -17,7 +17,6 @@
           ./home.nix
           ./ssh.nix
           ./vim.nix
-          ./windsurf.nix
           catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
         ];
