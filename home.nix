@@ -5,6 +5,9 @@
   ...
 }:
 {
+  nixpkgs.overlays = [
+    (import ./windsurf/overlay.nix)
+  ];
   home = {
     username = "oz";
     homeDirectory = "/home/oz";
@@ -35,7 +38,7 @@
       inkscape
       jdk
       jetbrains-toolbox
-      jetbrains.idea-community
+      jetbrains.idea-community-bin
       nodejs_22
       nuclear
       prismlauncher
