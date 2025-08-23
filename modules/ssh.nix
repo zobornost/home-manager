@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  pathtokeys = ./keys;
+  pathtokeys = ../keys;
   yubikeys = lib.lists.forEach (builtins.attrNames (builtins.readDir pathtokeys)) (
     key: lib.substring 0 (lib.stringLength key - lib.stringLength ".pub") key
   );
@@ -29,5 +29,6 @@ in
   };
   home.file = {
     ".ssh/sockets/.keep".text = "# Managed by Home Manager";
-  } // yubikeyPublicKeyEntries;
+  }
+  // yubikeyPublicKeyEntries;
 }

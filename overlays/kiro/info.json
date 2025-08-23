@@ -1,0 +1,7 @@
+{
+    "x86_64-linux": {
+        "version": "202508150626",
+        "url": "https://prod.download.desktop.kiro.dev/releases/202508150626--distro-linux-x64-tar-gz/202508150626-distro-linux-x64.tar.gz",
+        "sha256": "sha256-ORgN7gOyHGkO/ewqy62H0oNweZz7ViUAuEtXM1WgYIE="
+    }
+}

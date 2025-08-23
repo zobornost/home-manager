@@ -1,0 +1,8 @@
+{
+  "x86_64-linux": {
+    "version": "1.12.2",
+    "vscodeVersion": "1.99.3",
+    "url": "https://windsurf-stable.codeiumdata.com/linux-x64/stable/b8f002c02d165600299a109bf21d02d139c52644/Windsurf-linux-x64-1.12.2.tar.gz",
+    "sha256": "sha256-rh0wdSN4hcVryznVs29GDyqLpOQDjGPx0LV5UXjnfEM="
+  }
+}

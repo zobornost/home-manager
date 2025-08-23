@@ -5,18 +5,30 @@
     stylix.url = "github:nix-community/stylix";
     catppuccin.url = "github:catppuccin/nix";
   };
-  outputs = inputs @ { nixpkgs, home-manager, catppuccin, stylix, ... }:
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      catppuccin,
+      stylix,
+      ...
+    }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          (import ./overlays/kiro/kiro.nix)
+          (import ./overlays/windsurf/windsurf.nix)
+        ];
+      };
     in
     {
       homeConfigurations."oz" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home.nix
-          ./ssh.nix
-          ./vim.nix
           catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
         ];

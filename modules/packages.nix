@@ -1,0 +1,77 @@
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  home.packages = with pkgs; [
+    _1password-cli
+    _1password-gui
+    affine
+    blender
+    blockbench
+    code-cursor
+    chromium
+    dconf2nix
+    deskflow
+    deskreen
+    devbox
+    devenv
+    direnv
+    discord
+    eyedropper
+    ffmpeg
+    ghostty
+    gnome-screenshot
+    godot_4
+    google-chrome
+    hyfetch
+    imagemagick
+    inkscape
+    jdk
+    jetbrains-toolbox
+    jetbrains.idea-community-bin
+    kiro
+    logseq
+    nodejs_22
+    nuclear
+    obsidian
+    pv
+    # migrated from NixOS environment.systemPackages
+    codex
+    btop
+    curl
+    fd
+    fuzzel
+    gnome-extension-manager
+    gnome-tweaks
+    gparted
+    lazygit
+    micro
+    nix-index
+    nixfmt-rfc-style
+    nvd
+    pavucontrol
+    ripgrep
+    vim
+    yaru-theme
+    yubikey-manager
+    yubioath-flutter
+    #prismlauncher
+    qbittorrent
+    scribus
+    tana
+    vscode
+    windsurf
+    zed-editor
+    # Virtualization stack for managing VMs via virt-manager
+    virt-manager
+    virt-viewer
+    qemu
+    qemu_kvm
+    swtpm
+    spice-gtk
+    usbredir
+  ];
+}
