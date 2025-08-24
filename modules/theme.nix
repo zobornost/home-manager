@@ -5,11 +5,23 @@
   ...
 }:
 {
-  catppuccin.flavor = "macchiato";
+  home.packages = with pkgs; [
+    yaru-theme
+  ];
 
-  stylix = {
+  catppuccin = {
     enable = true;
-    autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    accent = "rosewater";
+    flavor = "macchiato";
+  };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        icon-theme  = "Yaru-magenta-dark";
+        cursor-theme = "Yaru";
+      };
+    };
   };
 }

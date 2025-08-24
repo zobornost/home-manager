@@ -26,6 +26,7 @@
     gnome-screenshot
     godot_4
     google-chrome
+    gtk3
     hyfetch
     imagemagick
     inkscape

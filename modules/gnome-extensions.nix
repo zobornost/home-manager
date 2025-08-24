@@ -1,46 +1,42 @@
 { config, lib, pkgs, ... }:
 {
-  # Declarative GNOME Shell extensions config (excluding transient settings)
-  # Source: live dump provided by user, curated to avoid host-specific values.
-
-  # Install extensions per-user via Home Manager (map from nix search results)
-  home.packages = with pkgs.gnomeExtensions; [
-    arcmenu
-    dash-to-panel
-    gsconnect
-    user-themes
-    window-is-ready-remover
-    window-title-is-back
-    tailscale-qs
-    display-configuration-switcher
-  ];
+  home.packages =
+    (with pkgs; [
+      gnome-extension-manager
+    ])
+    ++
+    (with pkgs.gnomeExtensions; [
+      arcmenu
+      dash-to-panel
+      gsconnect
+      user-themes
+      window-is-ready-remover
+      window-title-is-back
+      tailscale-qs
+      display-configuration-switcher
+    ]);
 
   dconf.settings = {
     "org/gnome/shell" = {
-      # Exact list provided by: gsettings get org.gnome.shell enabled-extensions
       enabled-extensions = [
         "arcmenu@arcmenu.com"
         "display-configuration-switcher@knokelmaat.gitlab.com"
         "dash-to-panel@jderose9.github.com"
         "gsconnect@andyholmes.github.io"
         "tailscale@joaophi.github.com"
-        "window-title-is-back@fthx"
         "windowIsReady_Remover@nunofarruca@gmail.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
-
-      # Intentionally NOT setting favorite-apps (transient/user-tuned)
     };
 
-    # Arc Menu — cosmetic/layout settings only; excluded transient keys like recently-installed-apps
     "org/gnome/shell/extensions/arcmenu" = {
       all-apps-button-action = "All_Programs";
       arc-menu-icon = 71;
       button-padding = -1;
-      custom-menu-button-icon-size = 24.0;
+      custom-menu-button-icon-size = 32.0;
       default-menu-view = "Frequent_Apps";
       distro-icon = 22;
-      force-menu-location = "BottomCentered";
+      force-menu-location = "BottomLeft";
       hide-overview-on-startup = true;
       menu-background-color = "rgb(30,30,46)";
       menu-border-color = "rgb(46,46,61)";
@@ -56,7 +52,7 @@
       menu-separator-color = "rgba(255,255,255,0.1)";
       multi-monitor = true;
       override-menu-theme = true;
-      position-in-panel = "Center";
+      position-in-panel = "Left";
       prefs-visible-page = 0;
       runner-hotkey = [ "Super_L" ];
       runner-position = "Centered";
@@ -65,15 +61,8 @@
       search-entry-border-radius = lib.hm.gvariant.mkTuple [ true (lib.hm.gvariant.mkInt32 25) ];
       show-activities-button = true;
       vert-separator = true;
-      # Excluded keys:
-      # - application-shortcuts, context-menu-items (user custom)
-      # - menu-themes (large theme matrix)
-      # - power-options (internal indices)
-      # - recently-installed-apps (ephemeral)
-      # - update-notifier-project-version (internal)
     };
 
-    # Dash to Panel — avoid host-specific monitor layouts; keep general look/behavior
     "org/gnome/shell/extensions/dash-to-panel" = {
       appicon-margin = 1;
       appicon-padding = 8;
@@ -133,21 +122,12 @@
       trans-use-dynamic-opacity = false;
       tray-padding = -1;
       window-preview-title-position = "TOP";
-      # Excluded keys:
-      # - available-monitors, primary-monitor (host-specific)
-      # - panel-anchors, panel-element-positions, panel-lengths, panel-positions, panel-sizes (per-monitor topology)
-      # - extension-version (derived)
     };
 
-    # GSConnect — keep identity; devices list is empty now
     "org/gnome/shell/extensions/gsconnect" = {
       devices = [];
       id = "b14b9c14-ca6b-44f1-9021-32ed7fce634f";
       name = "book";
     };
-
-    # NOTE: We intentionally skip display-configuration-switcher because its configs
-    # are highly machine-specific (monitor IDs, EDIDs, positions). If you want it
-    # declarative later, we can add a host-specific module.
   };
 }

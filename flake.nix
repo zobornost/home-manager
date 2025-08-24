@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    stylix.url = "github:nix-community/stylix";
     catppuccin.url = "github:catppuccin/nix";
   };
   outputs =
@@ -10,7 +9,6 @@
       nixpkgs,
       home-manager,
       catppuccin,
-      stylix,
       ...
     }:
     let
@@ -30,7 +28,6 @@
         modules = [
           ./oz.nix
           catppuccin.homeModules.catppuccin
-          stylix.homeModules.stylix
         ];
         extraSpecialArgs = { inherit inputs; };
       };
@@ -38,8 +35,7 @@
         inherit pkgs;
         modules = [
           ./zoe.nix
-          # catppuccin.homeModules.catppuccin  # Disabled for Silverblue GNOME stability
-          # stylix.homeModules.stylix          # Disabled to avoid user-theme GNOME Shell extension
+          catppuccin.homeModules.catppuccin
         ];
         extraSpecialArgs = { inherit inputs; };
       };

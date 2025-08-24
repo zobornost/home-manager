@@ -6,12 +6,12 @@
 }:
 {
   imports = [
-    # ./modules/gnome-extensions.nix  # Disabled to avoid GDM login loop on Silverblue
+    ./modules/gnome-extensions.nix
     ./modules/packages.nix
     ./modules/programs.nix
     ./modules/shells.nix
     ./modules/ssh.nix
-    # ./modules/theme.nix  # Disabled to avoid theming/user-theme interactions
+    ./modules/theme.nix
   ];
 
   home = {
