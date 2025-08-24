@@ -38,8 +38,8 @@
         inherit pkgs;
         modules = [
           ./zoe.nix
-          catppuccin.homeModules.catppuccin
-          stylix.homeModules.stylix
+          # catppuccin.homeModules.catppuccin  # Disabled for Silverblue GNOME stability
+          # stylix.homeModules.stylix          # Disabled to avoid user-theme GNOME Shell extension
         ];
         extraSpecialArgs = { inherit inputs; };
       };

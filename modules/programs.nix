@@ -30,8 +30,6 @@
       userEmail = "56755170+ozmodeuz@users.noreply.github.com";
     };
 
-    gnome-shell.enable = true;
-
     micro = {
       enable = true;
       settings = {

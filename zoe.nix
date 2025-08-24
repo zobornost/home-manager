@@ -11,7 +11,7 @@
     ./modules/programs.nix
     ./modules/shells.nix
     ./modules/ssh.nix
-    ./modules/theme.nix
+    # ./modules/theme.nix  # Disabled to avoid theming/user-theme interactions
   ];
 
   home = {
