@@ -28,7 +28,7 @@
       homeConfigurations."oz" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home.nix
+          ./oz.nix
           catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
         ];
@@ -37,7 +37,7 @@
       homeConfigurations."zoe" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home.nix
+          ./zoe.nix
           catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
         ];
