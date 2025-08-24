@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./modules/gnome-extensions.nix
+    # ./modules/gnome-extensions.nix  # Disabled to avoid GDM login loop on Silverblue
     ./modules/packages.nix
     ./modules/programs.nix
     ./modules/shells.nix
