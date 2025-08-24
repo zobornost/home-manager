@@ -34,5 +34,14 @@
         ];
         extraSpecialArgs = { inherit inputs; };
       };
+      homeConfigurations."zoe" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+          catppuccin.homeModules.catppuccin
+          stylix.homeModules.stylix
+        ];
+        extraSpecialArgs = { inherit inputs; };
+      };
     };
 }

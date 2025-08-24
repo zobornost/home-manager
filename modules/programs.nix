@@ -39,7 +39,5 @@
         "CtrlUnderscore" = "lua:comment.comment";
       };
     };
-
-    cosmicAtomicVm.enable = true;
   };
 }
