@@ -14,6 +14,7 @@
     code-cursor
     chromium
     dconf2nix
+    deja-dup
     deskflow
     deskreen
     devbox

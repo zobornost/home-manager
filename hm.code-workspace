@@ -7,5 +7,7 @@
 			"path": "../nixos"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"kiroAgent.configureMCP": "Disabled"
+	}
 }
