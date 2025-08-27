@@ -10,9 +10,6 @@
       enable = true;
       enableCompletion = true;
       initExtra = ''
-        # Ensure local bin is on PATH for interactive shells
-        export PATH="$HOME/.local/bin:$PATH"
-
         source "${pkgs.blesh}/share/blesh/ble.sh"
         eval "$(direnv hook bash)"
         nixos() {
@@ -27,16 +24,6 @@
             nix flake update --flake ~/.config/home-manager && home-manager switch --flake ~/.config/home-manager
           fi
         }
-
-        # Additional init from unmanaged/converted/bash.nix
-        HISTFILESIZE=100000
-        HISTSIZE=10000
-
-        shopt -s histappend
-        shopt -s checkwinsize
-        shopt -s extglob
-        shopt -s globstar
-        shopt -s checkjobs
       '';
     };
 

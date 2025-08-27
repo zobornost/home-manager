@@ -18,6 +18,7 @@
         config.allowUnfree = true;
         overlays = [
           (import ./overlays/kiro/kiro.nix)
+          (import ./overlays/rustrover/rustrover.nix)
           (import ./overlays/windsurf/windsurf.nix)
         ];
       };

@@ -14,16 +14,15 @@
     code-cursor
     chromium
     dconf2nix
-    deja-dup
     deskflow
     deskreen
     devbox
     devenv
     direnv
     discord
+    distrobox
     eyedropper
     ffmpeg
-    ghostty
     gnome-screenshot
     godot_4
     google-chrome
@@ -39,8 +38,8 @@
     nodejs_22
     nuclear
     obsidian
+    polkit
     pv
-    # migrated from NixOS environment.systemPackages
     codex
     btop
     curl
@@ -57,11 +56,11 @@
     pavucontrol
     ripgrep
     vim
-    yaru-theme
     yubikey-manager
     yubioath-flutter
     #prismlauncher
     qbittorrent
+    rustrover
     scribus
     tana
     vscode

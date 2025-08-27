@@ -5,23 +5,18 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    yaru-theme
-  ];
-
   catppuccin = {
     enable = true;
-    accent = "rosewater";
+    accent = "lavender";
     flavor = "macchiato";
-  };
 
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface" = {
-        icon-theme  = "Yaru-magenta-dark";
-        cursor-theme = "Yaru";
-      };
-    };
+    btop.enable = true;
+    chromium.enable = true;
+    cursors.enable = true;
+    ghostty.enable = true;
+    micro.enable = true;
+    starship.enable = true;
+    vscode.profiles.default.enable = true;
+    zed.enable = true;
   };
 }

@@ -1,0 +1,7 @@
+{
+    "x86_64-linux": {
+        "version": "2025.2",
+        "url": "https://download-cdn.jetbrains.com/rustrover/RustRover-2025.2.tar.gz",
+        "sha256": "sha256-mL+HgckyXTxN3WsPTvuTSyCfKvy/l1M+/9Lo/+QIAOA="
+    }
+}
